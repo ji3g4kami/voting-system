@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030020450) do
+ActiveRecord::Schema.define(version: 20171031080813) do
 
-  create_table "candidates", force: :cascade do |t|
-    t.string "name"
-    t.string "party"
-    t.integer "age"
-    t.text "politics"
-    t.integer "votes", default: 0
+# Could not dump table "candidates" because of following StandardError
+#   Unknown type 'nteger' for column 'vote_logs_count'
+
+  create_table "vote_logs", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_vote_logs_on_candidate_id"
   end
 
 end
